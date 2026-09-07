@@ -1,0 +1,702 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f4f6fa;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+
+  --dark: #111827;
+
+  --blue: #2563eb;
+  --blue-soft: #dbeafe;
+
+  --purple: #7c3aed;
+  --purple-soft: #ede9fe;
+
+  --red: #dc2626;
+
+  --radius: 18px;
+  --shadow: 0 14px 35px rgba(17, 24, 39, 0.07);
+}
+
+
+/* =========================
+   GENERAL
+========================= */
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar {
+  background: var(--dark);
+  color: white;
+
+  padding: 25px max(18px, calc((100vw - 1150px) / 2));
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.topbar h1 {
+  margin: 3px 0 4px;
+
+  font-size: clamp(
+    1.55rem,
+    3vw,
+    2.1rem
+  );
+}
+
+.topbar .subtitle {
+  margin: 0;
+
+  color: #cbd5e1;
+
+  font-size: 0.92rem;
+}
+
+.eyebrow,
+.small-label {
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 0.7rem;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+  width: min(
+    1150px,
+    calc(100% - 28px)
+  );
+
+  margin: 20px auto 50px;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-bottom: 16px;
+}
+
+.stat-card,
+.card {
+  background: var(--card);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+}
+
+.stat-card {
+  padding: 17px;
+}
+
+.stat-card span {
+  color: var(--muted);
+
+  font-size: 0.8rem;
+}
+
+.stat-card strong {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 1.6rem;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+  padding: 16px;
+
+  margin-bottom: 16px;
+}
+
+
+/* =========================
+   WEEK NAVIGATION
+========================= */
+
+.week-nav,
+.section-header,
+.modal-head,
+.modal-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.week-nav {
+  margin-bottom: 15px;
+}
+
+.week-title {
+  text-align: center;
+}
+
+.week-nav h2,
+.section-header h2,
+.modal-head h2 {
+  margin: 2px 0 0;
+
+  font-size: 1.15rem;
+}
+
+
+/* =========================
+   WEEK CALENDAR
+========================= */
+
+.week-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, minmax(145px, 1fr));
+
+  gap: 9px;
+
+  overflow-x: auto;
+
+  padding-bottom: 5px;
+}
+
+.day {
+  min-height: 230px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 14px;
+
+  background: #fbfcfe;
+
+  padding: 10px;
+}
+
+.day.today {
+  border: 2px solid #93c5fd;
+
+  background: #f8fbff;
+}
+
+.day-head {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+.day-name {
+  color: var(--muted);
+
+  font-size: 0.75rem;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+.day-number {
+  width: 29px;
+  height: 29px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  font-weight: 800;
+}
+
+.today .day-number {
+  background: var(--blue);
+
+  color: white;
+}
+
+
+/* =========================
+   EVENTS
+========================= */
+
+.entry {
+  width: 100%;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  padding: 9px;
+
+  margin-bottom: 7px;
+
+  text-align: left;
+
+  background: var(--blue-soft);
+
+  color: #1e3a8a;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.entry:hover {
+  transform: translateY(-1px);
+
+  opacity: 0.9;
+}
+
+
+/* PERSONAL EVENT */
+
+.entry.personal {
+  background: var(--purple-soft);
+
+  color: #5b21b6;
+}
+
+.entry-time {
+  display: block;
+
+  font-size: 0.72rem;
+
+  font-weight: 800;
+
+  margin-bottom: 3px;
+}
+
+.entry-title {
+  display: block;
+
+  font-size: 0.84rem;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.no-entry {
+  color: #9ca3af;
+
+  font-size: 0.78rem;
+
+  padding: 8px 1px;
+}
+
+
+/* =========================
+   AGENDA
+========================= */
+
+.agenda-list {
+  margin-top: 10px;
+}
+
+.agenda-row {
+  display: grid;
+
+  grid-template-columns:
+    95px 1fr auto;
+
+  align-items: center;
+
+  gap: 13px;
+
+  border-top:
+    1px solid var(--line);
+
+  padding: 13px 0;
+
+  cursor: pointer;
+}
+
+.agenda-row:first-child {
+  border-top: 0;
+}
+
+.agenda-date {
+  color: var(--muted);
+
+  font-size: 0.8rem;
+
+  font-weight: 750;
+}
+
+.agenda-main strong {
+  display: block;
+
+  margin-bottom: 3px;
+}
+
+.agenda-main span {
+  color: var(--muted);
+
+  font-size: 0.8rem;
+}
+
+
+/* =========================
+   BADGES
+========================= */
+
+.badge {
+  border-radius: 999px;
+
+  padding: 6px 9px;
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  background: var(--blue-soft);
+
+  color: #1e40af;
+}
+
+.badge.personal {
+  background: var(--purple-soft);
+
+  color: #6d28d9;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary-btn,
+.secondary-btn,
+.light-btn,
+.delete-btn {
+  border: 0;
+
+  border-radius: 11px;
+
+  padding: 10px 14px;
+
+  font-weight: 750;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.light-btn:hover,
+.delete-btn:hover {
+  opacity: 0.9;
+}
+
+.primary-btn:active,
+.secondary-btn:active,
+.light-btn:active {
+  transform: scale(0.97);
+}
+
+.primary-btn {
+  background: var(--blue);
+
+  color: white;
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+
+  color: var(--text);
+}
+
+.light-btn {
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  color: white;
+}
+
+.delete-btn {
+  background: #fee2e2;
+
+  color: var(--red);
+}
+
+.nav-btn,
+.close-btn {
+  width: 41px;
+  height: 41px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 11px;
+
+  background: white;
+
+  color: var(--text);
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+dialog {
+  width: min(
+    590px,
+    calc(100% - 24px)
+  );
+
+  border: 0;
+
+  padding: 0;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 30px 80px
+    rgba(17, 24, 39, 0.3);
+}
+
+dialog::backdrop {
+  background:
+    rgba(15, 23, 42, 0.55);
+
+  backdrop-filter: blur(3px);
+}
+
+form {
+  padding: 21px;
+}
+
+form label {
+  display: grid;
+
+  gap: 7px;
+
+  margin-top: 13px;
+
+  color: #374151;
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+
+  padding: 11px 12px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 11px;
+
+  background: white;
+
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #93c5fd;
+
+  box-shadow:
+    0 0 0 3px #dbeafe;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+/* =========================
+   FORM COLUMNS
+========================= */
+
+.two-cols {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 11px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* =========================
+   EMPTY AGENDA
+========================= */
+
+.empty-agenda {
+  text-align: center;
+
+  padding: 24px 10px;
+
+  color: var(--muted);
+}
+
+
+/* =========================
+   TABLET / MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .topbar {
+    padding: 21px 17px;
+
+    align-items: flex-start;
+  }
+
+  .stats {
+    gap: 7px;
+  }
+
+  .stat-card {
+    padding: 12px 10px;
+  }
+
+  .stat-card span {
+    font-size: 0.68rem;
+  }
+
+  .stat-card strong {
+    font-size: 1.2rem;
+  }
+
+  .week-grid {
+    grid-template-columns:
+      repeat(7, 150px);
+  }
+
+  .agenda-row {
+    grid-template-columns:
+      77px 1fr;
+  }
+
+  .agenda-row .badge {
+    grid-column: 2;
+
+    width: fit-content;
+  }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 470px) {
+
+  .topbar {
+    flex-direction: column;
+  }
+
+  .light-btn {
+    width: 100%;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+  }
+
+  .stat-card strong {
+    margin-top: 0;
+  }
+
+  .two-cols {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  .card {
+    padding: 13px;
+  }
+}
