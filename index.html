@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>My Weekly Schedule</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">WEEKLY PLANNER</p>
+      <h1>My Weekly Schedule</h1>
+      <p class="subtitle">Work shifts and personal plans in one place.</p>
+    </div>
+
+    <button id="todayBtn" class="light-btn">
+      This Week
+    </button>
+  </header>
+
+  <main class="container">
+
+    <!-- SUMMARY -->
+    <section class="stats">
+
+      <article class="stat-card">
+        <span>Work Hours</span>
+        <strong id="totalHours">0 h</strong>
+      </article>
+
+      <article class="stat-card">
+        <span>Work Shifts</span>
+        <strong id="totalShifts">0</strong>
+      </article>
+
+      <article class="stat-card">
+        <span>Personal Events</span>
+        <strong id="totalPersonal">0</strong>
+      </article>
+
+    </section>
+
+
+    <!-- WEEKLY CALENDAR -->
+    <section class="card">
+
+      <div class="week-nav">
+
+        <button id="prevWeek" class="nav-btn">
+          ←
+        </button>
+
+        <div class="week-title">
+          <span class="small-label">WEEK</span>
+          <h2 id="weekLabel"></h2>
+        </div>
+
+        <button id="nextWeek" class="nav-btn">
+          →
+        </button>
+
+      </div>
+
+      <div id="weekGrid" class="week-grid"></div>
+
+    </section>
+
+
+    <!-- UPCOMING AGENDA -->
+    <section class="card agenda-card">
+
+      <div class="section-header">
+
+        <div>
+          <span class="small-label">AGENDA</span>
+          <h2>Upcoming Events</h2>
+        </div>
+
+        <button id="addBtn" class="primary-btn">
+          + Add Event
+        </button>
+
+      </div>
+
+      <div id="agendaList" class="agenda-list"></div>
+
+    </section>
+
+  </main>
+
+
+  <!-- EVENT MODAL -->
+  <dialog id="entryDialog">
+
+    <form id="entryForm">
+
+      <div class="modal-head">
+
+        <div>
+          <span class="small-label">MANUAL ENTRY</span>
+          <h2 id="modalTitle">New Event</h2>
+        </div>
+
+        <button
+          type="button"
+          id="closeBtn"
+          class="close-btn"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <input
+        type="hidden"
+        id="entryId"
+      >
+
+
+      <!-- TYPE -->
+      <label>
+
+        Type
+
+        <select id="entryType">
+
+          <option value="work">
+            Work Shift
+          </option>
+
+          <option value="personal">
+            Personal Event
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <!-- TITLE -->
+      <label>
+
+        Title
+
+        <input
+          id="entryTitle"
+          type="text"
+          required
+          placeholder="Example: Freedom Bikes, Gym, Class..."
+        >
+
+      </label>
+
+
+      <!-- DATE + LOCATION -->
+      <div class="two-cols">
+
+        <label>
+
+          Date
+
+          <input
+            id="entryDate"
+            type="date"
+            required
+          >
+
+        </label>
+
+
+        <label>
+
+          Location
+
+          <input
+            id="entryLocation"
+            type="text"
+            placeholder="Optional"
+          >
+
+        </label>
+
+      </div>
+
+
+      <!-- START + END TIME -->
+      <div class="two-cols">
+
+        <label>
+
+          Start Time
+
+          <input
+            id="startTime"
+            type="time"
+            required
+          >
+
+        </label>
+
+
+        <label>
+
+          End Time
+
+          <input
+            id="endTime"
+            type="time"
+            required
+          >
+
+        </label>
+
+      </div>
+
+
+      <!-- NOTES -->
+      <label>
+
+        Notes
+
+        <textarea
+          id="notes"
+          rows="3"
+          placeholder="Additional information..."
+        ></textarea>
+
+      </label>
+
+
+      <!-- ACTIONS -->
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          id="deleteBtn"
+          class="delete-btn hidden"
+        >
+          Delete
+        </button>
+
+        <span></span>
+
+
+        <button
+          type="button"
+          id="cancelBtn"
+          class="secondary-btn"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="submit"
+          class="primary-btn"
+        >
+          Save
+        </button>
+
+      </div>
+
+    </form>
+
+  </dialog>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
